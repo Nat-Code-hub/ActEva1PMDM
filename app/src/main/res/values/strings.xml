@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Mi Perfil Personal</string>
+
+    <!-- MainActivity -->
+    <string name="welcome_title">Bienvenido a Mi App</string>
+    <string name="welcome_subtitle">Gestiona tu información personal</string>
+    <string name="btn_profile">Ver Mi Perfil</string>
+    <string name="btn_form">Actualizar Datos</string>
+
+    <!-- ProfileActivity -->
+    <string name="profile_title">Mi Perfil</string>
+    <string name="name_label">Nombre:</string>
+    <string name="email_label">Email:</string>
+    <string name="phone_label">Teléfono:</string>
+    <string name="bio_label">Biografía:</string>
+    <string name="btn_edit">Editar Información</string>
+    <string name="btn_back">Volver</string>
+
+    <!-- FormActivity -->
+    <string name="form_title">Actualizar Información</string>
+    <string name="hint_name">Ingresa tu nombre completo</string>
+    <string name="hint_email">correo@ejemplo.com</string>
+    <string name="hint_phone">Número de teléfono</string>
+    <string name="hint_bio">Cuéntanos sobre ti...</string>
+    <string name="btn_save">Guardar Cambios</string>
+    <string name="btn_clear">Limpiar Formulario</string>
+
+    <!-- Validaciones -->
+    <string name="error_empty_name">El nombre no puede estar vacío</string>
+    <string name="error_empty_email">El email no puede estar vacío</string>
+    <string name="error_invalid_email">Email inválido</string>
+    <string name="error_empty_phone">El teléfono no puede estar vacío</string>
+    <string name="error_invalid_phone">Teléfono inválido (mínimo 9 dígitos)</string>
+    <string name="success_saved">✓ Datos guardados correctamente</string>
+    <string name="form_cleared">Formulario limpiado</string>
+</resources>
