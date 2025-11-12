@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import android.content.Context
 
 /**
  * FormActivity - Formulario para ingresar/editar información personal
@@ -190,6 +191,11 @@ class FormActivity : AppCompatActivity() {
         val email = etEmail.text.toString().trim()
         val phone = etPhone.text.toString().trim()
         val bio = etBio.text.toString().trim().ifEmpty { "Sin información" }
+
+        val sharedPref = getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
+        sharedPref.edit().putString("USER_NAME", name).putString("USER_EMAIL", email).putString("USER_PHONE", phone).putString("USER_BIO", bio).apply()
+    //cosa añadida PARA PRUEBA
+        Toast.makeText(this, "Guardado: $name", Toast.LENGTH_LONG).show()
 
         // Mostrar Toast de éxito
         Toast.makeText(this, getString(R.string.success_saved), Toast.LENGTH_LONG).show()

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 
 /**
  * ProfileActivity - Muestra la información del perfil del usuario
@@ -49,14 +50,29 @@ class ProfileActivity : AppCompatActivity() {
 
     /**
      * Carga los datos enviados desde FormActivity mediante Intent
+     * Si no hay datos en Intent, busca en SharedPreferences
      * Si no hay datos, muestra "Sin información"
      */
     private fun loadProfileData() {
-        // Obtener datos del Intent
-        val name = intent.getStringExtra("USER_NAME") ?: "Sin información"
-        val email = intent.getStringExtra("USER_EMAIL") ?: "Sin información"
-        val phone = intent.getStringExtra("USER_PHONE") ?: "Sin información"
-        val bio = intent.getStringExtra("USER_BIO") ?: "Sin información"
+        // Obtener SharedPreferences
+        val sharedPref = getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
+
+        // Obtener datos del Intent, si no hay, buscar en SharedPreferences
+        val name = intent.getStringExtra("USER_NAME")
+            ?: sharedPref.getString("USER_NAME", "Sin información")
+            ?: "Sin información"
+
+        val email = intent.getStringExtra("USER_EMAIL")
+            ?: sharedPref.getString("USER_EMAIL", "Sin información")
+            ?: "Sin información"
+
+        val phone = intent.getStringExtra("USER_PHONE")
+            ?: sharedPref.getString("USER_PHONE", "Sin información")
+            ?: "Sin información"
+
+        val bio = intent.getStringExtra("USER_BIO")
+            ?: sharedPref.getString("USER_BIO", "Sin información")
+            ?: "Sin información"
 
         // Mostrar datos en las vistas
         tvName.text = name
