@@ -235,5 +235,4 @@ Este proyecto es de código abierto y está disponible para fines educativos.
 
 ---
 
-**Versión**: 1.0  
-**Última actualización**: Octubre 2024
+
