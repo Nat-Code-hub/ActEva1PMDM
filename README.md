@@ -143,7 +143,6 @@ MainActivity
 El flujo visual de la aplicación, mostrando las tres pantallas principales y sus interacciones.
 
 | Pantalla Principal |
-| :---: | :---: | :---: |
 <img width="378" height="824" alt="PantallaPrincipal" src="https://github.com/user-attachments/assets/5b8a7c14-7db9-42d1-9dab-9b6b57a54caa" />
 | Pantalla de Perfil |
 <img width="377" height="826" alt="Perfil" src="https://github.com/user-attachments/assets/60924f1b-5c13-4b15-beb3-ece9a577d9f6" />
