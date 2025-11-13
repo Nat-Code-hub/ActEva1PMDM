@@ -142,13 +142,13 @@ MainActivity
 
 El flujo visual de la aplicación, mostrando las tres pantallas principales y sus interacciones.
 
-| Pantalla Principal | Formulario de Edición |
+| Pantalla Principal | Vista de Perfil |
 | :---: | :---: |
-| <img width="378" alt="PantallaPrincipal" src="https://github.com/user-attachments/assets/5b8a7c14-7db9-42d1-9dab-9b6b57a54caa" /> | <img width="377" alt="FormularioDeEdicion" src="https://github.com/user-attachments/assets/b86773f2-3384-450d-a7af-b4bce058178c" /> |
+| <img width="378" alt="PantallaPrincipal" src="https://github.com/user-attachments/assets/5b8a7c14-7db9-42d1-9dab-9b6b57a54caa" /> | <img width="377" alt="Perfil" src="https://github.com/user-attachments/assets/60924f1b-5c13-4b15-beb3-ece9a577d9f6" /> |
 
-| Vista de Perfil | Perfil (Dato Actualizado) |
+| Formulario de Edición | Perfil (Dato Actualizado) |
 | :---: | :---: |
-| <img width="377" alt="Perfil" src="https://github.com/user-attachments/assets/60924f1b-5c13-4b15-beb3-ece9a577d9f6" /> | <img width="380" alt="DatoActualizado" src="https://github.com/user-attachments/assets/640ea97d-42ba-45c5-9ee6-a38e01d1e359" /> |
+| <img width="377" alt="FormularioDeEdicion" src="https://github.com/user-attachments/assets/b86773f2-3384-450d-a7af-b4bce058178c" /> | <img width="380" alt="DatoActualizado" src="https://github.com/user-attachments/assets/640ea97d-42ba-45c5-9ee6-a38e01d1e359" /> |
 
 ## 💾 Paso de Datos
 
