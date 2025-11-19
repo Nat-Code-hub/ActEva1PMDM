@@ -410,7 +410,7 @@ Multimedia/screenshots/Noveno.png
 
 ### 1. Pantalla Principal (Lista vacía)
 > Muestra la pantalla inicial con el buscador y el botón flotante para agregar clientes.
-<img width="247" height="520" alt="image" src="https://github.com/user-attachments/assets/90a7ecd4-1919-49eb-bb02-85870c0b6313" />
+Multimedia/screenshots/Cuarto.png
 
 
 ### 2. Formulario de Nuevo Cliente
