@@ -1,6 +1,5 @@
 package com.miapp.personal
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
@@ -10,42 +9,49 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import android.content.Context
 
 /**
- * FormActivity - Formulario para ingresar/editar información personal
- * Incluye validaciones robustas para todos los campos
- * Muestra feedback visual al usuario (Toast y TextView)
+ * FormActivity - Formulario para crear o editar clientes
+ * Incluye validaciones completas para todos los campos
+ * Guarda los datos en SQLite
  */
 class FormActivity : AppCompatActivity() {
 
     // Referencias a las vistas
-    private lateinit var tilName: TextInputLayout
+    private lateinit var tilNombre: TextInputLayout
     private lateinit var tilEmail: TextInputLayout
-    private lateinit var tilPhone: TextInputLayout
-    private lateinit var tilBio: TextInputLayout
+    private lateinit var tilTelefono: TextInputLayout
 
-    private lateinit var etName: TextInputEditText
+    private lateinit var etNombre: TextInputEditText
     private lateinit var etEmail: TextInputEditText
-    private lateinit var etPhone: TextInputEditText
-    private lateinit var etBio: TextInputEditText
+    private lateinit var etTelefono: TextInputEditText
 
     private lateinit var tvFeedback: TextView
-    private lateinit var btnSave: Button
-    private lateinit var btnClear: Button
-    private lateinit var btnBack: Button
+    private lateinit var btnGuardar: Button
+    private lateinit var btnLimpiar: Button
+    private lateinit var btnVolver: Button
+
+    // Base de datos
+    private lateinit var dbHelper: DatabaseHelper
+
+    // Variables para modo edición
+    private var clienteId: Int = -1
+    private var modoEdicion = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
 
-        // Inicializar todas las vistas
+        // Inicializar base de datos
+        dbHelper = DatabaseHelper(this)
+
+        // Inicializar vistas
         initViews()
 
-        // Cargar datos si vienen del perfil (modo edición)
-        loadExistingData()
+        // Verificar si es modo edición
+        verificarModoEdicion()
 
-        // Configurar listeners de botones
+        // Configurar botones
         setupButtons()
     }
 
@@ -54,39 +60,45 @@ class FormActivity : AppCompatActivity() {
      */
     private fun initViews() {
         // TextInputLayouts
-        tilName = findViewById(R.id.tilName)
+        tilNombre = findViewById(R.id.tilName)
         tilEmail = findViewById(R.id.tilEmail)
-        tilPhone = findViewById(R.id.tilPhone)
-        tilBio = findViewById(R.id.tilBio)
+        tilTelefono = findViewById(R.id.tilPhone)
 
         // EditTexts
-        etName = findViewById(R.id.etName)
+        etNombre = findViewById(R.id.etName)
         etEmail = findViewById(R.id.etEmail)
-        etPhone = findViewById(R.id.etPhone)
-        etBio = findViewById(R.id.etBio)
+        etTelefono = findViewById(R.id.etPhone)
 
         // Otros elementos
         tvFeedback = findViewById(R.id.tvFeedback)
-        btnSave = findViewById(R.id.btnSave)
-        btnClear = findViewById(R.id.btnClear)
-        btnBack = findViewById(R.id.btnBack)
+        btnGuardar = findViewById(R.id.btnSave)
+        btnLimpiar = findViewById(R.id.btnClear)
+        btnVolver = findViewById(R.id.btnBack)
     }
 
     /**
-     * Carga datos existentes si vienen del ProfileActivity (modo edición)
+     * Verifica si se está editando un cliente existente
      */
-    private fun loadExistingData() {
-        intent.getStringExtra("USER_NAME")?.let {
-            if (it != "Sin información") etName.setText(it)
-        }
-        intent.getStringExtra("USER_EMAIL")?.let {
-            if (it != "Sin información") etEmail.setText(it)
-        }
-        intent.getStringExtra("USER_PHONE")?.let {
-            if (it != "Sin información") etPhone.setText(it)
-        }
-        intent.getStringExtra("USER_BIO")?.let {
-            if (it != "Sin información") etBio.setText(it)
+    private fun verificarModoEdicion() {
+        clienteId = intent.getIntExtra("CLIENTE_ID", -1)
+
+        if (clienteId != -1) {
+            // Modo edición
+            modoEdicion = true
+            btnGuardar.text = "Actualizar Cliente"
+
+            // Cargar datos del cliente
+            val nombre = intent.getStringExtra("CLIENTE_NOMBRE") ?: ""
+            val email = intent.getStringExtra("CLIENTE_EMAIL") ?: ""
+            val telefono = intent.getStringExtra("CLIENTE_TELEFONO") ?: ""
+
+            etNombre.setText(nombre)
+            etEmail.setText(email)
+            etTelefono.setText(telefono)
+        } else {
+            // Modo creación
+            modoEdicion = false
+            btnGuardar.text = "Guardar Cliente"
         }
     }
 
@@ -94,79 +106,71 @@ class FormActivity : AppCompatActivity() {
      * Configura los listeners de todos los botones
      */
     private fun setupButtons() {
-        // Botón Guardar
-        btnSave.setOnClickListener {
-            if (validateForm()) {
-                saveAndNavigate()
+        // Botón Guardar/Actualizar
+        btnGuardar.setOnClickListener {
+            if (validarFormulario()) {
+                guardarCliente()
             }
         }
 
         // Botón Limpiar
-        btnClear.setOnClickListener {
-            clearForm()
-            Toast.makeText(this, getString(R.string.form_cleared), Toast.LENGTH_SHORT).show()
+        btnLimpiar.setOnClickListener {
+            limpiarFormulario()
+            Toast.makeText(this, "Formulario limpiado", Toast.LENGTH_SHORT).show()
         }
 
         // Botón Volver
-        btnBack.setOnClickListener {
+        btnVolver.setOnClickListener {
             finish()
         }
     }
 
     /**
      * Valida todos los campos del formulario
-     * Muestra mensajes de error específicos para cada campo
      * @return true si todos los campos son válidos
      */
-    private fun validateForm(): Boolean {
+    private fun validarFormulario(): Boolean {
         // Limpiar errores previos
-        clearErrors()
+        limpiarErrores()
 
         var isValid = true
 
         // Validar Nombre
-        val name = etName.text.toString().trim()
-        if (name.isEmpty()) {
-            tilName.error = getString(R.string.error_empty_name)
+        val nombre = etNombre.text.toString().trim()
+        if (nombre.isEmpty()) {
+            tilNombre.error = "El nombre no puede estar vacío"
             isValid = false
-        } else if (name.length < 3) {
-            tilName.error = "El nombre debe tener al menos 3 caracteres"
+        } else if (nombre.length < 3) {
+            tilNombre.error = "El nombre debe tener al menos 3 caracteres"
             isValid = false
         }
 
         // Validar Email
         val email = etEmail.text.toString().trim()
         if (email.isEmpty()) {
-            tilEmail.error = getString(R.string.error_empty_email)
+            tilEmail.error = "El email no puede estar vacío"
             isValid = false
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            tilEmail.error = getString(R.string.error_invalid_email)
+            tilEmail.error = "Email inválido"
             isValid = false
         }
 
         // Validar Teléfono
-        val phone = etPhone.text.toString().trim()
-        if (phone.isEmpty()) {
-            tilPhone.error = getString(R.string.error_empty_phone)
+        val telefono = etTelefono.text.toString().trim()
+        if (telefono.isEmpty()) {
+            tilTelefono.error = "El teléfono no puede estar vacío"
             isValid = false
-        } else if (phone.length < 9) {
-            tilPhone.error = getString(R.string.error_invalid_phone)
+        } else if (telefono.length < 9) {
+            tilTelefono.error = "El teléfono debe tener al menos 9 dígitos"
             isValid = false
-        } else if (!phone.matches(Regex("^[0-9]+$"))) {
-            tilPhone.error = "El teléfono solo debe contener números"
-            isValid = false
-        }
-
-        // Validar Biografía (opcional pero con mínimo si se llena)
-        val bio = etBio.text.toString().trim()
-        if (bio.isNotEmpty() && bio.length < 10) {
-            tilBio.error = "La biografía debe tener al menos 10 caracteres"
+        } else if (!telefono.matches(Regex("^[0-9]+$"))) {
+            tilTelefono.error = "El teléfono solo debe contener números"
             isValid = false
         }
 
-        // Mostrar feedback visual
+        // Mostrar feedback visual si hay errores
         if (!isValid) {
-            showFeedback("Por favor corrige los errores", false)
+            mostrarFeedback("Por favor corrige los errores", false)
         }
 
         return isValid
@@ -175,55 +179,81 @@ class FormActivity : AppCompatActivity() {
     /**
      * Limpia todos los mensajes de error de los campos
      */
-    private fun clearErrors() {
-        tilName.error = null
+    private fun limpiarErrores() {
+        tilNombre.error = null
         tilEmail.error = null
-        tilPhone.error = null
-        tilBio.error = null
+        tilTelefono.error = null
     }
 
     /**
-     * Guarda los datos y navega a ProfileActivity
+     * Guarda o actualiza el cliente en la base de datos
      */
-    private fun saveAndNavigate() {
+    private fun guardarCliente() {
         // Obtener valores de los campos
-        val name = etName.text.toString().trim()
+        val nombre = etNombre.text.toString().trim()
         val email = etEmail.text.toString().trim()
-        val phone = etPhone.text.toString().trim()
-        val bio = etBio.text.toString().trim().ifEmpty { "Sin información" }
+        val telefono = etTelefono.text.toString().trim()
 
-        val sharedPref = getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
-        sharedPref.edit().putString("USER_NAME", name).putString("USER_EMAIL", email).putString("USER_PHONE", phone).putString("USER_BIO", bio).apply()
-    //cosa añadida PARA PRUEBA
-        Toast.makeText(this, "Guardado: $name", Toast.LENGTH_LONG).show()
+        if (modoEdicion) {
+            // Actualizar cliente existente
+            val cliente = Cliente(
+                id = clienteId,
+                nombre = nombre,
+                email = email,
+                telefono = telefono
+            )
 
-        // Mostrar Toast de éxito
-        Toast.makeText(this, getString(R.string.success_saved), Toast.LENGTH_LONG).show()
+            val resultado = dbHelper.actualizarCliente(cliente)
 
-        // Mostrar feedback visual
-        showFeedback(getString(R.string.success_saved), true)
+            if (resultado > 0) {
+                Toast.makeText(this, "✓ Cliente actualizado correctamente", Toast.LENGTH_LONG).show()
+                mostrarFeedback("Cliente actualizado correctamente", true)
 
-        // Navegar al perfil con los datos
-        val intent = Intent(this, ProfileActivity::class.java).apply {
-            putExtra("USER_NAME", name)
-            putExtra("USER_EMAIL", email)
-            putExtra("USER_PHONE", phone)
-            putExtra("USER_BIO", bio)
+                // Volver a MainActivity después de 1 segundo
+                tvFeedback.postDelayed({
+                    finish()
+                }, 1000)
+            } else {
+                Toast.makeText(this, "Error al actualizar cliente", Toast.LENGTH_SHORT).show()
+                mostrarFeedback("Error al actualizar cliente", false)
+            }
+
+        } else {
+            // Crear nuevo cliente
+            val cliente = Cliente(
+                nombre = nombre,
+                email = email,
+                telefono = telefono
+            )
+
+            val resultado = dbHelper.insertarCliente(cliente)
+
+            if (resultado != -1L) {
+                Toast.makeText(this, "✓ Cliente guardado correctamente", Toast.LENGTH_LONG).show()
+                mostrarFeedback("Cliente guardado correctamente", true)
+
+                // Limpiar formulario y preparar para agregar otro
+                limpiarFormulario()
+
+                // Opcional: cerrar después de 2 segundos
+                tvFeedback.postDelayed({
+                    finish()
+                }, 2000)
+            } else {
+                Toast.makeText(this, "Error al guardar cliente", Toast.LENGTH_SHORT).show()
+                mostrarFeedback("Error: Es posible que el email ya exista", false)
+            }
         }
-
-        startActivity(intent)
-        finish() // Cerrar el formulario
     }
 
     /**
      * Limpia todos los campos del formulario
      */
-    private fun clearForm() {
-        etName.text?.clear()
+    private fun limpiarFormulario() {
+        etNombre.text?.clear()
         etEmail.text?.clear()
-        etPhone.text?.clear()
-        etBio.text?.clear()
-        clearErrors()
+        etTelefono.text?.clear()
+        limpiarErrores()
         tvFeedback.visibility = View.GONE
     }
 
@@ -232,7 +262,7 @@ class FormActivity : AppCompatActivity() {
      * @param message Mensaje a mostrar
      * @param isSuccess true para éxito (verde), false para error (rojo)
      */
-    private fun showFeedback(message: String, isSuccess: Boolean) {
+    private fun mostrarFeedback(message: String, isSuccess: Boolean) {
         tvFeedback.text = message
         tvFeedback.visibility = View.VISIBLE
 

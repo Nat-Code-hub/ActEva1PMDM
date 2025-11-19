@@ -33,4 +33,10 @@
     <string name="error_invalid_phone">Teléfono inválido (mínimo 9 dígitos)</string>
     <string name="success_saved">✓ Datos guardados correctamente</string>
     <string name="form_cleared">Formulario limpiado</string>
+
+    <!-- Item Cliente (RecyclerView) -->
+    <string name="cliente_nombre_placeholder">Nombre del Cliente</string>
+    <string name="cliente_email_placeholder">email@ejemplo.com</string>
+    <string name="cliente_telefono_placeholder">123456789</string>
+
 </resources>

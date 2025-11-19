@@ -18,17 +18,19 @@
             android:layout_height="wrap_content"
             android:padding="24dp">
 
+            <!-- Título del formulario -->
             <TextView
                 android:id="@+id/tvFormTitle"
                 style="@style/TitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/form_title"
+                android:text="Formulario de Cliente"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Mensaje de feedback -->
             <TextView
                 android:id="@+id/tvFeedback"
                 android:layout_width="0dp"
@@ -42,8 +44,11 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvFormTitle" />
+                app:layout_constraintTop_toBottomOf="@id/tvFormTitle"
+                tools:visibility="visible"
+                tools:text="Cliente guardado correctamente" />
 
+            <!-- Campo Nombre -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilName"
                 style="@style/InputField"
@@ -58,11 +63,12 @@
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_name"
+                    android:hint="Ej: Juan Pérez García"
                     android:inputType="textPersonName" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Campo Email -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilEmail"
                 style="@style/InputField"
@@ -77,11 +83,12 @@
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_email"
+                    android:hint="correo@ejemplo.com"
                     android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Campo Teléfono -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPhone"
                 style="@style/InputField"
@@ -96,54 +103,35 @@
                     android:id="@+id/etPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_phone"
+                    android:hint="Número de teléfono"
                     android:inputType="phone" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBio"
-                style="@style/InputField"
-                android:layout_marginTop="16dp"
-                android:hint="Biografía"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilPhone"
-                app:startIconDrawable="@android:drawable/ic_menu_info_details">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etBio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:hint="@string/hint_bio"
-                    android:inputType="textMultiLine"
-                    android:lines="4"
-                    android:minLines="4" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
+            <!-- Botón Guardar -->
             <Button
                 android:id="@+id/btnSave"
                 style="@style/ButtonPrimary"
                 android:layout_marginTop="32dp"
-                android:text="@string/btn_save"
+                android:text="Guardar Cliente"
                 app:icon="@android:drawable/ic_menu_save"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBio" />
+                app:layout_constraintTop_toBottomOf="@id/tilPhone" />
 
+            <!-- Botón Limpiar -->
             <Button
                 android:id="@+id/btnClear"
                 style="@style/ButtonPrimary"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/text_secondary"
-                android:text="@string/btn_clear"
+                android:text="Limpiar Formulario"
                 app:icon="@android:drawable/ic_menu_close_clear_cancel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnSave" />
 
+            <!-- Botón Volver -->
             <Button
                 android:id="@+id/btnBack"
                 style="@style/ButtonPrimary"
