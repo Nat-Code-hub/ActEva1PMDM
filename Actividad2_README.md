@@ -268,45 +268,44 @@ Multimedia/screenshots/Noveno.png
 ### 6. Selección para Editar
 > Cliente seleccionado para editar sus datos.
 
-Multimedia/screenshots/Cuarto.png
-![Captura](screenshots/ActEva1PMDM/Cuarto.png)
+![Selección para editar](Multimedia/screenshots/Cuarto.png)
+
 ---
 
 ### 7. Edición de Cliente
 > Formulario en modo edición mostrando "Actualizar Cliente".
 
-Multimedia/screenshots/Quinto.png
+![Edición de cliente](Multimedia/screenshots/Quinto.png)
 
 ---
 
 ### 8. Cliente Actualizado
 > Lista actualizada mostrando el cambio de nombre.
 
-Multimedia/screenshots/Sexto.png
+![Cliente actualizado](Multimedia/screenshots/Sexto.png)
 
 ---
 
 ### 9. Confirmación de Eliminación
 > AlertDialog solicitando confirmación antes de eliminar.
 
-Multimedia/screenshots/Septimo.png
+![Confirmación de eliminación](Multimedia/screenshots/Septimo.png)
 
 ---
 
 ### 10. Cliente Eliminado
 > Lista actualizada tras eliminar un cliente (contador reduce).
 
-Multimedia/screenshots/Octavo.png
+![Cliente eliminado](Multimedia/screenshots/Octavo.png)
 
 ---
 
 ### 11. Vista Final
-> Vista general de la aplicación con múltiples clientes. Se arreglo la parte de arriba.
+> Vista general de la aplicación con múltiples clientes. Se arregló la parte de arriba.
 
-Multimedia/screenshots/Decimo.png
+![Vista final](Multimedia/screenshots/Decimo.png)
 
 ---
-
 ## 🚀 Instrucciones de Instalación
 
 ### **Requisitos:**
