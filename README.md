@@ -146,7 +146,6 @@ El flujo visual de la aplicación, mostrando las tres pantallas principales y su
 | :---: | :---: |
 | <img width="378" alt="PantallaPrincipal" src="https://github.com/user-attachments/assets/5b8a7c14-7db9-42d1-9dab-9b6b57a54caa" /> | <img width="377" alt="FormularioDeEdicion" src="https://github.com/user-attachments/assets/b86773f2-3384-450d-a7af-b4bce058178c" /> |
 | Pantalla Principal | Vista de Perfil |
-|       |       |
 | <img width="378" alt="PantallaPrincipal" src="https://github.com/user-attachments/assets/5b8a7c14-7db9-42d1-9dab-9b6b57a54caa" /> | <img width="377" alt="Perfil" src="https://github.com/user-attachments/assets/60924f1b-5c13-4b15-beb3-ece9a577d9f6" /> |
 
 ## 💾 Paso de Datos
