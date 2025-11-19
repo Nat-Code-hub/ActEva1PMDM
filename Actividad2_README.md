@@ -269,7 +269,7 @@ Multimedia/screenshots/Noveno.png
 > Cliente seleccionado para editar sus datos.
 
 Multimedia/screenshots/Cuarto.png
-
+![Captura](screenshots/ActEva1PMDM/Cuarto.png)
 ---
 
 ### 7. Edición de Cliente
