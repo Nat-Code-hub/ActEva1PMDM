@@ -265,45 +265,80 @@ Multimedia/screenshots/Noveno.png
 
 ---
 
+## 📸 Capturas de Pantalla
+
+### 1. Pantalla Principal (Lista vacía)
+> Muestra la pantalla inicial con el buscador y el botón flotante para agregar clientes.
+<img width="247" height="520" alt="image" src="https://github.com/user-attachments/assets/90a7ecd4-1919-49eb-bb02-85870c0b6313" />
+---
+
+### 2. Formulario de Nuevo Cliente
+> Formulario con validaciones para agregar un cliente nuevo.
+
+**PEGA AQUÍ: Segundo.png** (o como se llame)
+
+---
+
+### 3. Cliente Agregado
+> Lista mostrando el cliente recién agregado.
+
+**PEGA AQUÍ: Tercero.png** (o como se llame)
+
+---
+
+### 4. Lista con Múltiples Clientes
+> RecyclerView mostrando varios clientes con scroll funcional.
+
+**PEGA AQUÍ: Cuarto.png**
+
+---
+
+### 5. Búsqueda Dinámica
+> Filtrado en tiempo real al escribir "Isab" en el buscador.
+
+**PEGA AQUÍ: Quinto.png**
+
+---
+
 ### 6. Selección para Editar
 > Cliente seleccionado para editar sus datos.
 
-![Selección para editar](Multimedia/screenshots/Cuarto.png)
+**PEGA AQUÍ: Sexto.png**
 
 ---
 
 ### 7. Edición de Cliente
 > Formulario en modo edición mostrando "Actualizar Cliente".
 
-![Edición de cliente](Multimedia/screenshots/Quinto.png)
+**PEGA AQUÍ: Septimo.png**
 
 ---
 
 ### 8. Cliente Actualizado
 > Lista actualizada mostrando el cambio de nombre.
 
-![Cliente actualizado](Multimedia/screenshots/Sexto.png)
+**PEGA AQUÍ: Octavo.png**
 
 ---
 
 ### 9. Confirmación de Eliminación
 > AlertDialog solicitando confirmación antes de eliminar.
 
-![Confirmación de eliminación](Multimedia/screenshots/Septimo.png)
+**PEGA AQUÍ: Noveno.png** (o como se llame)
 
 ---
 
 ### 10. Cliente Eliminado
 > Lista actualizada tras eliminar un cliente (contador reduce).
 
-![Cliente eliminado](Multimedia/screenshots/Octavo.png)
+**PEGA AQUÍ: Decimo.png**
 
 ---
 
 ### 11. Vista Final
-> Vista general de la aplicación con múltiples clientes. Se arregló la parte de arriba.
+> Vista general de la aplicación con múltiples clientes. Se arregló la barra superior.
 
-![Vista final](Multimedia/screenshots/Decimo.png)
+**PEGA AQUÍ: Undecimo.png** (o como se llame tu última captura)
 
 ---
 ## 🚀 Instrucciones de Instalación
