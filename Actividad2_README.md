@@ -485,4 +485,4 @@ Este proyecto es de carácter académico para la asignatura de Programación Mul
 
 **Versión**: 1.0  
 **Última actualización**: Noviembre 2025
-**Fecha de entrega:** [19/11/2025]  
+**Fecha de entrega:** [20/11/2025]  
