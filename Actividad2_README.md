@@ -410,73 +410,58 @@ Multimedia/screenshots/Noveno.png
 
 ### 1. Pantalla Principal (Lista vacía)
 > Muestra la pantalla inicial con el buscador y el botón flotante para agregar clientes.
-Multimedia/screenshots/Cuarto.png
+<img width="282" height="612" alt="image" src="https://github.com/user-attachments/assets/dbb777a4-ed6b-4b4e-a888-c40288476e97" />
 
 
 ### 2. Formulario de Nuevo Cliente
 > Formulario con validaciones para agregar un cliente nuevo.
-
-**PEGA AQUÍ: Segundo.png** (o como se llame)
-
+<img width="282" height="612" alt="image" src="https://github.com/user-attachments/assets/62d632b1-4e35-4aac-8ba0-a80bba15c4f1" />
 
 
 ### 3. Cliente Agregado
 > Lista mostrando el cliente recién agregado.
-
-**PEGA AQUÍ: Tercero.png** (o como se llame)
+<img width="272" height="607" alt="image" src="https://github.com/user-attachments/assets/b579bc83-4b18-4603-85c9-5c8f7c9978f6" />
 
 
 ### 4. Lista con Múltiples Clientes
 > RecyclerView mostrando varios clientes con scroll funcional.
-
-**PEGA AQUÍ: Cuarto.png**
-
+<img width="248" height="528" alt="image" src="https://github.com/user-attachments/assets/e9139023-0144-4ed7-b584-afa40a650646" />
 
 
 ### 5. Búsqueda Dinámica
 > Filtrado en tiempo real al escribir "Isab" en el buscador.
-
-**PEGA AQUÍ: Quinto.png**
-
+<img width="292" height="610" alt="image" src="https://github.com/user-attachments/assets/60963678-afb3-4c14-ac3f-f05cc8e417c2" />
 
 
 ### 6. Selección para Editar
 > Cliente seleccionado para editar sus datos.
-
-**PEGA AQUÍ: Sexto.png**
+<img width="252" height="528" alt="image" src="https://github.com/user-attachments/assets/d227b305-d2fc-4c5e-869b-684fce8f33dd" />
 
 
 ### 7. Edición de Cliente
 > Formulario en modo edición mostrando "Actualizar Cliente".
-
-**PEGA AQUÍ: Septimo.png**
-
+<img width="286" height="612" alt="image" src="https://github.com/user-attachments/assets/ba0c5c19-f0ca-47b1-b768-48b846aee52d" />
 
 
 ### 8. Cliente Actualizado
 > Lista actualizada mostrando el cambio de nombre.
-
-**PEGA AQUÍ: Octavo.png**
-
+<img width="291" height="605" alt="image" src="https://github.com/user-attachments/assets/e5447e09-0e4d-422b-87c6-d83b8456c320" />
 
 
 ### 9. Confirmación de Eliminación
 > AlertDialog solicitando confirmación antes de eliminar.
-
-**PEGA AQUÍ: Noveno.png** (o como se llame)
+<img width="292" height="607" alt="image" src="https://github.com/user-attachments/assets/d7def0d8-4b43-4fd5-a374-e651d9ef1168" />
 
 
 ### 10. Cliente Eliminado
 > Lista actualizada tras eliminar un cliente (contador reduce).
-
-**PEGA AQUÍ: Decimo.png**
-
+<img width="281" height="605" alt="image" src="https://github.com/user-attachments/assets/e93024a9-02b4-4b88-b32a-294fdee00714" />
 
 
 ### 11. Vista Final
 > Vista general de la aplicación con múltiples clientes. Se arregló la barra superior.
+<img width="293" height="605" alt="image" src="https://github.com/user-attachments/assets/a6a7eaec-1943-4397-9f9f-f4c018a51333" />
 
-**PEGA AQUÍ: Undecimo.png** (o como se llame tu última captura)
 
 ## 👨‍💻 Autor
 
